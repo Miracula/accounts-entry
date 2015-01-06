@@ -9,7 +9,7 @@
           </div>
         {{/if}}
 
-        <div class="entry col-md-4 col-md-offset-4">
+        <div class="entry">
           <h3>{{t9n "createAccount"}}</h3>
       
           {{#if otherLoginServices}}
@@ -27,7 +27,8 @@
                       {{t9n "signUpWithYourEmailAddress"}}
                     </div>
                     <div class="content">
-                        <h1>It Works!</h1>
+                        <h1>The Accordion Works!</h1>
+                        <p>Move the passwordLoginService in here</p>
                     </div>
                   </div>                    
 
@@ -42,29 +43,37 @@
           {{> entryError}}
 
           {{#if passwordLoginService}}
+          <div class="ui form">
           <form class="entry-form {{signupClass}}" id='signUp'>
             {{#if showUsername}}
-              <div class="form-group">
-                <label>{{t9n "username"}}</label>
-                <input autofocus name="username" type="string" class="form-control" value=''>
+              <div class="required field">
+                <div class="ui icon input">
+                  <input autofocus name="username" type="string" class="form-control" value='{{username}}' placeholder="{{t9n 'username'}}">
+                  <i class="user icon"></i>
+                </div>
               </div>
+
             {{/if}}
 
             {{#if showEmail}}
-              <div class="form-group">
-                <label>{{t9n "emailAddress"}}</label>
-                {{#if showUsername}}
-                  <input type="email" class="form-control" value='{{emailAddress}}'>
-                {{else}}
-                  <input autofocus type="email" class="form-control" value='{{emailAddress}}'>
-                {{/if}}
+              <div class="required field">
+                <div class="ui icon input">
+                  {{#if showUsername}}
+                    <input type="email" class="form-control" value='{{emailAddress}}' placeholder="{{t9n 'email'}}">
+                  {{else}}
+                    <input autofocus type="email" class="form-control" value='{{emailAddress}}' placeholder="{{t9n 'email'}}">
+                  {{/if}}
+                    <i class="mail icon"></i>
+                </div>
               </div>
             {{/if}}
 
-            <div class="form-group">
-              <label>{{t9n "password"}}</label>
-              <input type="password" class="form-control" value=''>
-            </div>
+              <div class="required field">
+                <div class="ui icon input">
+                  <input name="password" type="password" class="form-control" value='{{password}}' placeholder="{{t9n 'password'}}">
+                  <i class="lock icon"></i>
+                </div>
+              </div>        
 
             {{#if showSignupCode}}
               <div class="form-group">
@@ -74,8 +83,9 @@
             {{/if}}
 
             {{> entryExtraSignUpFields}}
-            <button type="submit" class="submit btn btn-block btn-default">{{t9n "signUp"}}</button>
+            <button type="submit" class="positive fluid ui button">{{t9n "signUp"}}</button>
           </form>
+          </div>
         {{/if}}
 
 
