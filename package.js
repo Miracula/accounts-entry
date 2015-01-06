@@ -1,8 +1,8 @@
 Package.describe({
     summary: "Make signin and signout their own pages with routes.",
     version: '1.0.3',
-    name: "joshowens:accounts-entry",
-    githubUrl: 'https://github.com/Differential/accounts-entry',
+    name: "miracula:accounts-entry-semantic-ui",
+    githubUrl: 'https://github.com/Miracula/accounts-entry-semantic-ui',
 });
 
 Package.onUse(function(api) {
@@ -89,7 +89,7 @@ Package.onTest(function (api) {
             'coffeescript'
             ]);
   api.use(['iron:router', 'softwarerero:accounts-t9n', 'joshowens:simple-form'], ['client', 'server']);
-  api.use('joshowens:accounts-entry');
+  api.use('miracula:accounts-entry-semantic-ui');
 
   api.addFiles(['tests/route.coffee', 'tests/client.html', 'tests/client.coffee'], 'client');
 });

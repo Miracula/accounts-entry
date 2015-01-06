@@ -1,12 +1,83 @@
 <template name='entrySignIn'>
-  <div class="container">
-    <div class="row">
+  <div class="ui page grid">
+    <div class="seven wide centered column">
+      <div class="ui center aligned segment">
+      
+      
       {{#if logo}}
         <div class="entry-logo">
             <a href="/"><img src="{{logo}}" alt="logo"></a>
         </div>
       {{/if}}
-      <div class="entry col-md-4 col-md-offset-4">
+
+      <div class="entry">
+        {{#if otherLoginServices}}
+        <div class="entry-social">
+          {{#each loginServices}}
+            {{> entrySocial}}
+          {{/each}}
+          {{#if passwordLoginService}}
+          <div class="email-option">
+            <strong class="line-thru or-sign-in">{{t9n "OR"}}</strong>
+          </div>
+          {{/if}}
+        </div>
+        {{/if}}
+        {{> entryError}}
+        {{#unless otherLoginServices}}
+          <div class="email-option">
+            <h3>{{t9n "signIn"}}</h3>
+          </div>
+        {{/unless}}
+        {{#if passwordLoginService}}
+          <div class="ui form">
+            <form class="entry-form" id='signIn'>
+              <div class="required field">
+                <div class="ui icon input">
+                  <input autofocus name="email" type="{{emailInputType}}" class="form-control" placeholder="{{emailPlaceholder}}">
+                  <i class="user icon"></i>
+                </div>
+              </div>
+              <div class="required field">
+                <div class="ui icon input">
+                  <input name="password" type="password" class="form-control" value='{{password}}' placeholder="{{t9n 'password'}}">
+                  <i class="lock icon"></i>
+                </div>
+              </div>              
+            {{#unless isUsernameOnly}}
+              <p><a href="{{pathFor 'entryForgotPassword'}}">{{t9n "forgotPassword"}}</a></p>
+              <button type="submit" class="positive fluid ui button">{{t9n "signIn"}}</button>
+            {{/unless}}
+          </form>
+        </div>
+        {{/if}}
+        {{#if showCreateAccountLink}}
+        <p class="entry-signup-cta">{{t9n "dontHaveAnAccount"}} <a href="{{pathFor 'entrySignUp'}}">{{t9n "signUp"}}</a></p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  </div>
+</template>
+
+
+
+
+
+
+<template name='ORIGentrySignIn'>
+  <div class="ui page grid">
+    <div class="seven wide centered column">
+      <div class="ui center aligned segment">
+      
+      
+      {{#if logo}}
+        <div class="entry-logo">
+            <a href="/"><img src="{{logo}}" alt="logo"></a>
+        </div>
+      {{/if}}
+
+      <div class="entry">
         {{#if otherLoginServices}}
         <div class="entry-social">
           {{#each loginServices}}
@@ -44,5 +115,6 @@
         {{/if}}
       </div>
     </div>
+  </div>
   </div>
 </template>
