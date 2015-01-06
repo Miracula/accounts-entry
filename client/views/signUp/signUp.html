@@ -19,74 +19,71 @@
                 {{> entrySocial}}
               {{/each}}
               {{#if passwordLoginService}}
-                <div class="email-option">
 
-                  <strong class="line-thru">{{t9n "OR"}}</strong>
-                  <div class="ui accordion" >
-                    <div class="title" id="signUpAccordion">
-                      {{t9n "signUpWithYourEmailAddress"}}
+              <div class="email-option">
+
+                <strong class="line-thru">{{t9n "OR"}}</strong>
+                <div class="ui accordion" >
+                  <div class="title" id="signUpAccordion">
+                    {{t9n "signUpWithYourEmailAddress"}}
+                  </div>
+                  <div class="content">
+
+                  {{> entryError}}
+
+                    <div class="ui form">
+                    <form class="entry-form {{signupClass}}" id='signUp'>
+
+                  {{#if showUsername}}
+                    <div class="required field">
+                      <div class="ui icon input">
+                        <input autofocus name="username" type="string" class="form-control" value='{{username}}' placeholder="{{t9n 'username'}}">
+                        <i class="user icon"></i>
+                      </div>
                     </div>
-                    <div class="content">
-                        <h1>The Accordion Works!</h1>
-                        <p>Move the passwordLoginService in here</p>
+                  {{/if}}
+
+                  {{#if showEmail}}
+                    <div class="required field">
+                      <div class="ui icon input">
+                        {{#if showUsername}}
+                          <input type="email" class="form-control" value='{{emailAddress}}' placeholder="{{t9n 'email'}}">
+                        {{else}}
+                          <input autofocus type="email" class="form-control" value='{{emailAddress}}' placeholder="{{t9n 'email'}}">
+                        {{/if}}
+                          <i class="mail icon"></i>
+                      </div>
                     </div>
-                  </div>                    
+                  {{/if}}
 
+                    <div class="required field">
+                      <div class="ui icon input">
+                        <input name="password" type="password" class="form-control" value='{{password}}' placeholder="{{t9n 'password'}}">
+                        <i class="lock icon"></i>
+                      </div>
+                    </div>        
 
+                  {{#if showSignupCode}}
+                    <div class="required field">
+                      <div class="ui icon input">
+                        <label>{{t9n "signupCode"}}</label>
+                        <input name="signupCode" type="string" class="form-control" value=''>
+                      </div>
+                    </div>
+                  {{/if}}
+
+                  {{> entryExtraSignUpFields}}
+                    <button type="submit" class="positive fluid ui button">{{t9n "signUp"}}</button>
+                    </form>
+                  </div>
                 </div>
-              {{/if}}
+              </div>                    
+            </div>
+          {{/if}}
             </div>
           {{else}}
               <p class="entry-signin-cta">{{t9n "ifYouAlreadyHaveAnAccount"}} <a href="{{pathFor 'entrySignIn'}}">{{t9n "signin"}}</a>.</p>
           {{/if}}
-
-          {{> entryError}}
-
-          {{#if passwordLoginService}}
-          <div class="ui form">
-          <form class="entry-form {{signupClass}}" id='signUp'>
-            {{#if showUsername}}
-              <div class="required field">
-                <div class="ui icon input">
-                  <input autofocus name="username" type="string" class="form-control" value='{{username}}' placeholder="{{t9n 'username'}}">
-                  <i class="user icon"></i>
-                </div>
-              </div>
-
-            {{/if}}
-
-            {{#if showEmail}}
-              <div class="required field">
-                <div class="ui icon input">
-                  {{#if showUsername}}
-                    <input type="email" class="form-control" value='{{emailAddress}}' placeholder="{{t9n 'email'}}">
-                  {{else}}
-                    <input autofocus type="email" class="form-control" value='{{emailAddress}}' placeholder="{{t9n 'email'}}">
-                  {{/if}}
-                    <i class="mail icon"></i>
-                </div>
-              </div>
-            {{/if}}
-
-              <div class="required field">
-                <div class="ui icon input">
-                  <input name="password" type="password" class="form-control" value='{{password}}' placeholder="{{t9n 'password'}}">
-                  <i class="lock icon"></i>
-                </div>
-              </div>        
-
-            {{#if showSignupCode}}
-              <div class="form-group">
-                <label>{{t9n "signupCode"}}</label>
-                <input name="signupCode" type="string" class="form-control" value=''>
-              </div>
-            {{/if}}
-
-            {{> entryExtraSignUpFields}}
-            <button type="submit" class="positive fluid ui button">{{t9n "signUp"}}</button>
-          </form>
-          </div>
-        {{/if}}
 
 
 
